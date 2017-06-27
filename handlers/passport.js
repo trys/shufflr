@@ -15,7 +15,7 @@ passport.use(new InstagramStrategy(
   {
     clientID: process.env.INSTAGRAM_ID,
     clientSecret: process.env.INSTAGRAM_SECRET,
-    callbackURL: "http://localhost:7777/auth/instagram/callback"
+    callbackURL: `${process.env.DOMAIN}/auth/instagram/callback`
   },
   function(accessToken, refreshToken, profile, done) {
     User.findOneAndUpdate(
