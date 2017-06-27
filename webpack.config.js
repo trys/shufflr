@@ -72,6 +72,7 @@ const config = {
   // plugins: [uglify]
   plugins: [
     // here is where we tell it to output our css to a separate file
+    uglify,
     new ExtractTextPlugin('style.css'),
   ]
 };
