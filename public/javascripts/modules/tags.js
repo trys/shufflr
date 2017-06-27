@@ -21,7 +21,7 @@ function tags(shuffler) {
     $$(tagSelector).forEach(el => tagsText.push(el.textContent)); 
 
     if ( tagsText ) {
-      copyArea.value = '#' + tagsText.join(' #');
+      copyArea.value = tagsText.join(' ');
     }
 
     copyTags(copyArea);

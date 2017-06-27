@@ -164,7 +164,7 @@ function tags(shuffler) {
     });
 
     if (tagsText) {
-      copyArea.value = '#' + tagsText.join(' #');
+      copyArea.value = tagsText.join(' ');
     }
 
     copyTags(copyArea);

@@ -1,0 +1,10 @@
+$grey: #F8FCFF;
+$purple: #7F38A7;
+
+body {
+	-moz-osx-font-smoothing: grayscale;
+	 -webkit-font-smoothing: antialiased;
+	background: $grey;
+	color: $purple;
+	font: 300 16px /1.4 'Montserrat', sans-serif;
+}

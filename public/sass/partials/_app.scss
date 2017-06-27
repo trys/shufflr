@@ -1,0 +1,125 @@
+.top {
+	padding: 1.25rem;
+	border-bottom: 1px solid #E9ECF0;
+	text-align: center;
+	position: relative;
+	margin: 0 0 30px;
+
+	.logo {
+		font-size: 30px;
+		font-weight: 500;
+	}
+
+	.logout {
+		position: absolute;
+		right: 1.25rem;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+}
+
+.inner {
+	padding: 0.625rem;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 500px;
+}
+
+.card {
+	background: #FFF;
+	box-shadow: 0 5px 10px rgba(0,0,0,0.18);
+	padding: 0.625rem;
+	position: relative;
+}
+
+.button {
+	-webkit-tap-highlight-color: transparent;
+	-webkit-appearance: none;
+	text-decoration: none;
+	letter-spacing: 0.0375em;
+	border-radius: 0;
+	line-height: 1;
+	background: $purple;
+	transition: 300ms all;
+	text-align: center;
+	box-shadow: none;
+	max-width: 100%;
+	display: inline-block;
+	padding: 10px 11px 11px;
+	outline: none;
+	margin: 0 0 10px;
+	cursor: pointer;
+	border: none;
+	width: 100%;
+	color: #FFF;
+	font: 500 0.75em 'Montserrat', sans-serif;
+
+	&:hover {
+		background: darken($purple, 5%);
+	}
+
+	&--light {
+		background: #E6DCF1;
+		color: $purple;
+
+		&:hover {
+			background: darken(#E6DCF1, 5%);
+		}
+	}
+}
+
+.tags {
+	.tag {
+		margin: 0 7px 7px 0;
+		background: #E3ECF4;
+		padding: 3px 31px 2px 7px;
+		display: inline-block;
+		max-width: 100%;
+		position: relative;
+		border-radius: 30px;
+		font-size: 0.75em;
+		cursor: pointer;
+
+		&:after {
+			content: '';
+			width: 1.0833em;
+			height: 100%;
+			background: url('data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTMiIHZpZXdCb3g9IjAgMCAxMyAxMyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxjaXJjbGUgZmlsbD0iIzdGMzhBNyIgY3g9IjYuNSIgY3k9IjYuNSIgcj0iNi41Ii8+PHBhdGggZD0iTTQuNSA4LjVsNC00TTguNSA4LjVsLTQtNCIgc3Ryb2tlPSIjRkZGIiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIi8+PC9nPjwvc3ZnPg==') center /100% auto no-repeat;
+			position: absolute;
+			right: 6px;
+			top: 0;
+		}
+	}
+
+	.tag--add {
+		background: $purple;
+		color: #FFF;
+
+		&:after {
+			background-image: url('data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTMiIHZpZXdCb3g9IjAgMCAxMyAxMyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNiA2SDN2MWgzdjNoMVY3aDNWNkg3VjNINnYzem0uNSA3QzIuOSAxMyAwIDEwLjEgMCA2LjVTMi45IDAgNi41IDAgMTMgMi45IDEzIDYuNSAxMC4xIDEzIDYuNSAxM3oiIGZpbGw9IiNGOEZDRkYiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==');
+		}
+	}
+}
+
+
+.photo-page {
+
+	&__image {
+		width: 150px;
+		margin: -30px auto 20px;
+		box-shadow: 0 5px 10px rgba(0,0,0,0.18);
+	}
+
+	&__textarea {
+		display: none;
+	}
+
+	.button--light {
+		width: calc(50% - 5px);
+
+		& + .button--light {
+			margin-left: 10px;
+		}
+	}
+
+}
