@@ -4,13 +4,19 @@ block content
 	.inner
 		.photo.photo-page.card
 			img.photo-page__image(src=image.image)
+			a.button.button--light.photo-page__shuffle(href=`/feed/${image.id}`) Shuffle
+			button.button.button--light.photo-page__copy(type="button") Copy
+			//- button.button.photo-page__post(type="submit" form="comment") Post to your latest photo
 			ul.tags
 				each tag in image.tags
 					li.tag.tag--name ##{tag}
-				li.tag.tag--add Add
-			a.button.button--light.photo-page__shuffle(href=`/feed/${image.id}`) Shuffle
-			button.button.button--light.photo-page__copy(type="button") Copy
-			button.button.photo-page__post(type="button") Post to your latest photo
+				li.tag.tag--add(class=(image.tags.length >= 30 ? 'tag--full' : '')) Add
+			form.new-tag
+				input(type="text" name="tag" placeholder="Add New Tag" pattern="^[#]?[A-Za-z0-9]{1,25}" required)
+				input.button(type="submit" value="Add")
+
+			//- form(method="post" action="/latest" id="comment")
 			- const tagsList = image.tags ? '#' + image.tags.join(' #') : '';
-			textarea.photo-page__textarea= tagsList
+			textarea(name="tags").photo-page__textarea= tagsList
+
 

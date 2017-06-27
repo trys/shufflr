@@ -15,6 +15,7 @@
 		right: 1.25rem;
 		top: 50%;
 		transform: translateY(-50%);
+		opacity: 0.5;
 	}
 }
 
@@ -30,6 +31,22 @@
 	box-shadow: 0 5px 10px rgba(0,0,0,0.18);
 	padding: 0.625rem;
 	position: relative;
+}
+
+[type="text"] {
+	border: 1px solid #DDD;
+	background: #FFF;
+	color: #555;
+	width: 100%;
+	display: block;
+	font: inherit;
+	padding: 10px;
+	margin: 0 0 10px;
+	outline: none;
+
+	&:focus {
+		outline: 1px solid $purple;
+	}
 }
 
 .button {
@@ -66,10 +83,23 @@
 			background: darken(#E6DCF1, 5%);
 		}
 	}
+
+	&--success {
+		background: #52ec93;
+		color: #FFF;
+
+		&:hover {
+			background: darken(#52ec93, 5%);
+		}
+	}
 }
 
 .tags {
+	margin: 15px 0;
+
 	.tag {
+		-webkit-tap-highlight-color: transparent;
+		user-select: none;
 		margin: 0 7px 7px 0;
 		background: #E3ECF4;
 		padding: 3px 31px 2px 7px;
@@ -99,11 +129,15 @@
 			background-image: url('data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTMiIHZpZXdCb3g9IjAgMCAxMyAxMyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNiA2SDN2MWgzdjNoMVY3aDNWNkg3VjNINnYzem0uNSA3QzIuOSAxMyAwIDEwLjEgMCA2LjVTMi45IDAgNi41IDAgMTMgMi45IDEzIDYuNSAxMC4xIDEzIDYuNSAxM3oiIGZpbGw9IiNGOEZDRkYiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==');
 		}
 	}
+
+	.tag--full {
+		opacity: 0.5;
+		cursor: disabled;
+	}
 }
 
 
 .photo-page {
-
 	&__image {
 		width: 150px;
 		margin: -30px auto 20px;
@@ -111,7 +145,16 @@
 	}
 
 	&__textarea {
-		display: none;
+		border: 0;
+		clip: rect( 1px, 1px, 1px, 1px );
+		clip-path: inset( 50% );
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		width: 1px;
+		word-wrap: normal;
 	}
 
 	.button--light {
@@ -122,4 +165,51 @@
 		}
 	}
 
+}
+
+.new-tag {
+	position: relative;
+	display: none;
+
+	&.show {
+		display: block;
+	}
+
+	[type="submit"] {
+		height: 100%;
+		width: auto;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+
+	[type="text"] {
+		padding-right: 59px;
+	}
+}
+
+
+.photo-preview {
+	padding-left: 100px;
+	margin-bottom: 30px;
+	min-height: 70px;
+	font-size: 14px;
+
+	&__link {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+	}
+
+	&__image {
+		object-fit: cover;
+		width: 70px;
+		height: 70px;
+		position: absolute;
+		left: 10px;
+		top: -10px;
+	}
 }

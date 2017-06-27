@@ -10,7 +10,7 @@ html
       if user
         header.top
           a.logo(href="/") Shufflr
-          a.logout(href="/logout" rel="nofollow") Logout
+          a.logout(href="/logout" rel="nofollow")!= h.icon('logout')
 
     //- block messages
     //-   if locals.flashes

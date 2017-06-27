@@ -25,14 +25,7 @@ exports.getFeed = async (req, res, next) => {
     }
   });
 
-  res.format({
-    'text/html': () => {
-      res.render('feed', { title: 'Your Feed', images });
-    },
-    'application/json': () => {
-      res.json(images);
-    }
-  })
+  res.render('feed', { title: 'Your Feed', images });
 }
 
 
@@ -59,12 +52,27 @@ exports.getImage = async (req, res, next) => {
   })
 }
 
+exports.postComment = async (req, res) => {
+  if(!req.body || !req.body.tags) return res.json('');
+  const recent = await instagram_get('users/self/media/recent', req, '&count=1');
+  if (! recent || ! recent.data || ! recent.data.data) return next();
+  const firstPost = recent.data.data[0].id;
+  const response = await instagram_post(`media/${firstPost}/comments`, req, '&text=' + req.body.tags);
 
-function instagram_get(url, req) {
+  res.json(response.data);
+}
+
+
+function instagram_post(url, req, arguments, method) {
+  return instagram_get(url, req, arguments, 'post')
+}
+
+
+function instagram_get(url, req, arguments, method) {
   if(!url) return false;
   return axios({
-    method: 'get',
-    url: `https://api.instagram.com/v1/${url}/?access_token=${req.user.instagramToken}`,
+    method: method || 'get',
+    url: `https://api.instagram.com/v1/${url}/?access_token=${req.user.instagramToken}${encodeURI(arguments || '').replace(/%20/g, '+')}`,
     responseType: 'json'
   });
 }

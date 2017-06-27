@@ -1,41 +1,105 @@
 import { $, $$ } from './bling';
+import dompurify from 'dompurify';
+import axios from 'axios';
+const tagSelector = '.tags .tag--name';
 
 function tags(shuffler) {
-  const tagSelector = '.tags .tag--name';
+  
   if(!shuffler || !tags) return;
   
-  attachHandlers($$(tagSelector));
+  attachHandlers();
 
   shuffler.on('click', function(event) {
     shuffleElements($$(tagSelector));
-    attachHandlers($$(tagSelector));
+    attachHandlers();
     event.preventDefault();
   });
 
   $('.photo-page__copy').on('click', function(event) {
     event.preventDefault();
-    const copyArea = $('.photo-page__textarea');
-    copyArea.value = '';
-    
-    let tagsText = [];
-    $$(tagSelector).forEach(el => tagsText.push(el.textContent)); 
+    setTags();
+    copyTags();
+  });
 
-    if ( tagsText ) {
-      copyArea.value = tagsText.join(' ');
+  $('.tag--add').on('click', function() {
+    if (this.classList.contains('tag--full')) return false;
+    const addInput = $('[name="tag"]');
+    addInput.parentNode.classList.add('show');
+    addInput.focus();
+  });
+
+  $('.new-tag').on('submit', function(event) {
+    event.preventDefault();
+    this.classList.remove('show');
+    const el = document.createElement('li');
+    el.classList.add('tag', 'tag--name');
+    let tagValue = this.tag.value;
+    if (tagValue.indexOf('#') !== 0) {
+      tagValue = '#' + tagValue;
     }
 
-    copyTags(copyArea);
+    el.textContent = dompurify.sanitize(tagValue).toLowerCase();
+    $('.tag--add').parentNode.insertBefore(el, $('.tag--add'));
+    
+    attachHandlers();
+    checkTags();
+    this.tag.value = '';
   });
+
+  // $('#comment').on('submit', function(event) {
+  //   setTags();
+  //   event.preventDefault();
+  //   axios({
+  //     method: 'post',
+  //     url: '/latest',
+  //     data: {
+  //       tags: getTags()
+  //     }
+  //   })
+  //   .then(res => {
+  //     console.log(res.data);
+  //   })
+  //   .catch(err => {
+  //     console.error(err);
+  //   });
+  // });
 }
 
 
-function attachHandlers(tags) {
-  tags.on('click', function() {
+function setTags() {
+  const copyArea = $('.photo-page__textarea');
+  copyArea.value = getTags();
+}
+
+
+function getTags() {
+  let tagsText = [];
+  $$(tagSelector).forEach(el => tagsText.push(el.textContent)); 
+
+  if ( tagsText ) {
+    return tagsText.join(' ')
+  }
+
+  return '';
+}
+
+
+function attachHandlers() {
+  $$(tagSelector).on('click', function() {
     this.remove();
+    checkTags();
+    setTags();
   });
 }
 
-function copyTags(copyArea) {
+function checkTags() {
+  const tags = $$(tagSelector);
+  const action = tags.length >= 30 ? 'add' : 'remove';
+  $('.tag--add').classList[action]('tag--full');
+}
+
+function copyTags() {
+  const copyArea = $('.photo-page__textarea');
   copyArea.select();
 
   try {
@@ -45,6 +109,11 @@ function copyTags(copyArea) {
     } else if ( window.getSelection ) {
        window.getSelection().removeAllRanges();
     }
+
+    $('.photo-page__copy').classList.add('button--success');
+    setTimeout(function() {
+      $('.photo-page__copy').classList.remove('button--success');
+    }, 1000);
   } catch (err) {
 
   }

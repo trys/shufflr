@@ -2,10 +2,10 @@ extends layout
 
 block content
 	.inner
-		h1= title
+		h1 Pick the image you wish to copy the hashtags from.
 		each photo in images
-			.photo
-				a(href=`/feed/${photo.id}`)
-					img.photo__image(src=photo.image)
-					.photo__caption= photo.caption
+			.photo.card.photo-preview
+				a.photo-preview__link(href=`/feed/${photo.id}`)
+				img.photo-preview__image(src=photo.image)
+				.photo-preview__caption= photo.caption
 

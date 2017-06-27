@@ -15,5 +15,6 @@ router.get('/logout', authController.logout);
 
 router.get('/feed', authController.isLoggedIn, catchErrors(userController.getFeed));
 router.get('/feed/:id', authController.isLoggedIn, catchErrors(userController.getImage));
+// router.post('/latest', authController.isLoggedIn, catchErrors(userController.postComment));
 
 module.exports = router;
