@@ -1,6 +1,4 @@
 import { $, $$ } from './bling';
-import dompurify from 'dompurify';
-import axios from 'axios';
 const tagSelector = '.tags .tag--name';
 
 function tags(shuffler) {
@@ -38,7 +36,7 @@ function tags(shuffler) {
       tagValue = '#' + tagValue;
     }
 
-    el.textContent = dompurify.sanitize(tagValue).toLowerCase();
+    el.appendChild(document.createTextNode(tagValue.toLowerCase()));
     $('.tag--add').parentNode.insertBefore(el, $('.tag--add'));
     
     attachHandlers();
