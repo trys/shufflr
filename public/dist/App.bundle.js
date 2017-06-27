@@ -113,6 +113,116 @@ __webpack_require__(1);
 
 var _bling = __webpack_require__(0);
 
+var _tags = __webpack_require__(10);
+
+var _tags2 = _interopRequireDefault(_tags);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _tags2.default)((0, _bling.$)('.photo-page__shuffle'));
+
+/***/ }),
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _bling = __webpack_require__(0);
+
+function tags(shuffler) {
+  var tagSelector = '.tags .tag--name';
+  if (!shuffler || !tags) return;
+
+  attachHandlers((0, _bling.$$)(tagSelector));
+
+  shuffler.on('click', function (event) {
+    shuffleElements((0, _bling.$$)(tagSelector));
+    attachHandlers((0, _bling.$$)(tagSelector));
+    event.preventDefault();
+  });
+
+  (0, _bling.$)('.photo-page__copy').on('click', function (event) {
+    event.preventDefault();
+    var copyArea = (0, _bling.$)('.photo-page__textarea');
+    copyArea.value = '';
+
+    var tagsText = [];
+    (0, _bling.$$)(tagSelector).forEach(function (el) {
+      return tagsText.push(el.textContent);
+    });
+
+    if (tagsText) {
+      copyArea.value = '#' + tagsText.join(' #');
+    }
+
+    copyTags(copyArea);
+  });
+}
+
+function attachHandlers(tags) {
+  tags.on('click', function () {
+    this.remove();
+  });
+}
+
+function copyTags(copyArea) {
+  copyArea.select();
+
+  try {
+    document.execCommand('copy');
+    if (document.selection) {
+      document.selection.empty();
+    } else if (window.getSelection) {
+      window.getSelection().removeAllRanges();
+    }
+  } catch (err) {}
+}
+
+// Hat tip: https://j11y.io/javascript/shuffling-the-dom/
+function shuffleElements(elems) {
+
+  var allElems = function () {
+    var ret = [],
+        l = elems.length;
+    while (l--) {
+      ret[ret.length] = elems[l];
+    }
+    return ret;
+  }();
+
+  var shuffled = function () {
+    var l = allElems.length,
+        ret = [];
+    while (l--) {
+      var random = Math.floor(Math.random() * allElems.length),
+          randEl = allElems[random].cloneNode(true);
+      allElems.splice(random, 1);
+      ret[ret.length] = randEl;
+    }
+    return ret;
+  }(),
+      l = elems.length;
+
+  while (l--) {
+    elems[l].parentNode.insertBefore(shuffled[l], elems[l].nextSibling);
+    elems[l].parentNode.removeChild(elems[l]);
+  }
+}
+
+exports.default = tags;
+
 /***/ })
 /******/ ]);
 //# sourceMappingURL=App.bundle.js.map

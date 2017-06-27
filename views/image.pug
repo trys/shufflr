@@ -2,14 +2,15 @@ extends layout
 
 block content
 	.inner
-		h1= title
-		.photo-page
+		.photo.photo-page
 			img.photo-page__image(src=image.image)
 			ul.tags
 				each tag in image.tags
-					li.tag= tag
+					li.tag.tag--name= tag
 				li.tag.tag--add Add
 			a.button.button--light.photo-page__shuffle(href=`/feed/${image.id}`) Shuffle
 			button.button.button--light.photo-page__copy(type="button") Copy
 			button.button.photo-page__post(type="button") Post to your latest photo
+			- const tagsList = image.tags ? '#' + image.tags.join(' #') : '';
+			textarea.photo-page__textarea= tagsList
 
