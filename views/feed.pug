@@ -1,0 +1,11 @@
+extends layout
+
+block content
+	.inner
+		h1= title
+		each photo in images
+			.photo
+				a(href=`/feed/${photo.id}`)
+					img.photo__image(src=photo.image)
+					.photo__caption= photo.caption
+
