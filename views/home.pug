@@ -2,7 +2,8 @@ extends layout
 
 block content
 	.flex-center
-		.inner.center
+		.inner.center.home-content
 			h1.home-logo Shufflr
 			p Shuffle & copy your Instagram hashtag lists.
-			a.button(href="/auth/instagram") Login with Instagram
+			a.button.button--login(href="/auth/instagram")
+				span!= h.icon('instagram') + 'Connect with Instagram'

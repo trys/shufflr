@@ -1,1 +1,287 @@
-!function(t){function e(o){if(n[o])return n[o].exports;var r=n[o]={i:o,l:!1,exports:{}};return t[o].call(r.exports,r,r.exports,e),r.l=!0,r.exports}var n={};e.m=t,e.c=n,e.i=function(t){return t},e.d=function(t,n,o){e.o(t,n)||Object.defineProperty(t,n,{configurable:!1,enumerable:!0,get:o})},e.n=function(t){var n=t&&t.__esModule?function(){return t.default}:function(){return t};return e.d(n,"a",n),n},e.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},e.p="",e(e.s=30)}({2:function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var o=document.querySelector.bind(document),r=document.querySelectorAll.bind(document);Node.prototype.on=window.on=function(t,e){this.addEventListener(t,e)},NodeList.prototype.__proto__=Array.prototype,NodeList.prototype.on=NodeList.prototype.addEventListener=function(t,e){this.forEach(function(n){n.on(t,e)})},e.$=o,e.$$=r},30:function(t,e,n){"use strict";function o(t){return t&&t.__esModule?t:{default:t}}var r=n(2);(0,o(n(9)).default)((0,r.$)(".photo-page__shuffle"))},9:function(t,e,n){"use strict";function o(t){t&&o&&(c(),t.on("click",function(t){s((0,l.$$)(d)),c(),t.preventDefault()}),(0,l.$)(".photo-page__copy").on("click",function(t){t.preventDefault(),r(),u()}),(0,l.$)(".tag--add").on("click",function(){if(this.classList.contains("tag--full"))return!1;var t=(0,l.$)('[name="tag"]');t.parentNode.classList.add("show"),t.focus()}),(0,l.$)(".new-tag").on("submit",function(t){t.preventDefault(),this.classList.remove("show");var e=document.createElement("li");e.classList.add("tag","tag--name");var n=this.tag.value;0!==n.indexOf("#")&&(n="#"+n),e.appendChild(document.createTextNode(n.toLowerCase())),(0,l.$)(".tag--add").parentNode.insertBefore(e,(0,l.$)(".tag--add")),c(),i(),this.tag.value=""}))}function r(){(0,l.$)(".photo-page__textarea").value=a()}function a(){var t=[];return(0,l.$$)(d).forEach(function(e){return t.push(e.textContent)}),t?t.join(" "):""}function c(){(0,l.$$)(d).on("click",function(){this.remove(),i(),r()})}function i(){var t=(0,l.$$)(d),e=t.length>=30?"add":"remove";(0,l.$)(".tag--add").classList[e]("tag--full")}function u(){(0,l.$)(".photo-page__textarea").select();try{document.execCommand("copy"),document.selection?document.selection.empty():window.getSelection&&window.getSelection().removeAllRanges(),(0,l.$)(".photo-page__copy").classList.add("button--success"),setTimeout(function(){(0,l.$)(".photo-page__copy").classList.remove("button--success")},1e3)}catch(t){}}function s(t){for(var e=function(){for(var e=[],n=t.length;n--;)e[e.length]=t[n];return e}(),n=function(){for(var t=e.length,n=[];t--;){var o=Math.floor(Math.random()*e.length),r=e[o].cloneNode(!0);e.splice(o,1),n[n.length]=r}return n}(),o=t.length;o--;)t[o].parentNode.insertBefore(n[o],t[o].nextSibling),t[o].parentNode.removeChild(t[o])}Object.defineProperty(e,"__esModule",{value:!0});var l=n(2),d=".tags .tag--name";e.default=o}});
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+/******/
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// identity function for calling harmony imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+// based on https://gist.github.com/paulirish/12fb951a8b893a454b32
+
+var $ = document.querySelector.bind(document);
+var $$ = document.querySelectorAll.bind(document);
+
+Node.prototype.on = window.on = function (name, fn) {
+  this.addEventListener(name, fn);
+};
+
+NodeList.prototype.__proto__ = Array.prototype; // eslint-disable-line
+
+NodeList.prototype.on = NodeList.prototype.addEventListener = function (name, fn) {
+  this.forEach(function (elem) {
+    elem.on(name, fn);
+  });
+};
+
+exports.$ = $;
+exports.$$ = $$;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _bling = __webpack_require__(0);
+
+var tagSelector = '.tags .tag--name';
+
+function tags(shuffler) {
+
+  if (!shuffler || !tags) return;
+
+  attachHandlers();
+
+  shuffler.on('click', function (event) {
+    shuffleElements((0, _bling.$$)(tagSelector));
+    attachHandlers();
+    event.preventDefault();
+  });
+
+  (0, _bling.$)('.photo-page__copy').on('click', function (event) {
+    event.preventDefault();
+    setTags();
+    copyTags();
+  });
+
+  (0, _bling.$)('.tag--add').on('click', function () {
+    if (this.classList.contains('tag--full')) return false;
+    var addInput = (0, _bling.$)('[name="tag"]');
+    addInput.parentNode.classList.add('show');
+    addInput.focus();
+  });
+
+  (0, _bling.$)('.new-tag').on('submit', function (event) {
+    event.preventDefault();
+    this.classList.remove('show');
+    var el = document.createElement('li');
+    el.classList.add('tag', 'tag--name');
+    var tagValue = this.tag.value;
+    if (tagValue.indexOf('#') !== 0) {
+      tagValue = '#' + tagValue;
+    }
+
+    el.appendChild(document.createTextNode(tagValue.toLowerCase()));
+    (0, _bling.$)('.tag--add').parentNode.insertBefore(el, (0, _bling.$)('.tag--add'));
+
+    attachHandlers();
+    checkTags();
+    this.tag.value = '';
+  });
+
+  // $('#comment').on('submit', function(event) {
+  //   setTags();
+  //   event.preventDefault();
+  //   axios({
+  //     method: 'post',
+  //     url: '/latest',
+  //     data: {
+  //       tags: getTags()
+  //     }
+  //   })
+  //   .then(res => {
+  //     console.log(res.data);
+  //   })
+  //   .catch(err => {
+  //     console.error(err);
+  //   });
+  // });
+}
+
+function setTags() {
+  var copyArea = (0, _bling.$)('.photo-page__textarea');
+  copyArea.value = getTags();
+}
+
+function getTags() {
+  var tagsText = [];
+  (0, _bling.$$)(tagSelector).forEach(function (el) {
+    return tagsText.push(el.textContent);
+  });
+
+  if (tagsText) {
+    return tagsText.join(' ');
+  }
+
+  return '';
+}
+
+function attachHandlers() {
+  (0, _bling.$$)(tagSelector).on('click', function () {
+    this.remove();
+    checkTags();
+    setTags();
+  });
+}
+
+function checkTags() {
+  var tags = (0, _bling.$$)(tagSelector);
+  var action = tags.length >= 30 ? 'add' : 'remove';
+  (0, _bling.$)('.tag--add').classList[action]('tag--full');
+}
+
+function copyTags() {
+  var copyArea = (0, _bling.$)('.photo-page__textarea');
+  copyArea.select();
+
+  try {
+    document.execCommand('copy');
+    if (document.selection) {
+      document.selection.empty();
+    } else if (window.getSelection) {
+      window.getSelection().removeAllRanges();
+    }
+
+    (0, _bling.$)('.photo-page__copy').classList.add('button--success');
+    setTimeout(function () {
+      (0, _bling.$)('.photo-page__copy').classList.remove('button--success');
+    }, 1000);
+  } catch (err) {}
+}
+
+// Hat tip: https://j11y.io/javascript/shuffling-the-dom/
+function shuffleElements(elems) {
+
+  var allElems = function () {
+    var ret = [],
+        l = elems.length;
+    while (l--) {
+      ret[ret.length] = elems[l];
+    }
+    return ret;
+  }();
+
+  var shuffled = function () {
+    var l = allElems.length,
+        ret = [];
+    while (l--) {
+      var random = Math.floor(Math.random() * allElems.length),
+          randEl = allElems[random].cloneNode(true);
+      allElems.splice(random, 1);
+      ret[ret.length] = randEl;
+    }
+    return ret;
+  }(),
+      l = elems.length;
+
+  while (l--) {
+    elems[l].parentNode.insertBefore(shuffled[l], elems[l].nextSibling);
+    elems[l].parentNode.removeChild(elems[l]);
+  }
+}
+
+exports.default = tags;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(2);
+
+var _bling = __webpack_require__(0);
+
+var _tags = __webpack_require__(1);
+
+var _tags2 = _interopRequireDefault(_tags);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _tags2.default)((0, _bling.$)('.photo-page__shuffle'));
+
+/***/ })
+/******/ ]);
+//# sourceMappingURL=App.bundle.js.map

@@ -14,8 +14,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new InstagramStrategy(
   {
     clientID: process.env.INSTAGRAM_ID,
-    clientSecret: process.env.INSTAGRAM_SECRET,
-    callbackURL: `${process.env.DOMAIN}/auth/instagram/callback`
+    clientSecret: process.env.INSTAGRAM_SECRET
   },
   function(accessToken, refreshToken, profile, done) {
     User.findOneAndUpdate(

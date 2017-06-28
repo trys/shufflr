@@ -92,6 +92,29 @@
 			background: darken(#52ec93, 5%);
 		}
 	}
+
+	&--login {
+		font-size: 16px;
+		background: linear-gradient(to left, #7F38A7, #A264C5);
+		position: relative;
+		padding: 20px 5px;
+
+		svg {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			left: 0;
+		}
+
+		span {
+			position: relative;
+			padding-left: 45px;
+		}
+
+		&:hover {
+			background: linear-gradient(to left, #6F2897, #A264C5);
+		}
+	}
 }
 
 .tags {
@@ -190,10 +213,10 @@
 
 
 .photo-preview {
-	padding-left: 100px;
+	padding-left: 7.142em;
 	margin-bottom: 30px;
-	min-height: 70px;
-	font-size: 14px;
+	min-height: 5em;
+	font-size: 0.875em;
 
 	&__link {
 		position: absolute;
@@ -206,8 +229,8 @@
 
 	&__image {
 		object-fit: cover;
-		width: 70px;
-		height: 70px;
+		width: 5em;
+		height: 5em;
 		position: absolute;
 		left: 10px;
 		top: -10px;
@@ -237,5 +260,15 @@
 
 	.inner {
 		max-width: 400px;
+	}
+}
+
+.home-content {
+	padding-left: 20px;
+	padding-right: 20px;
+
+	p {
+		font-weight: 500;
+		font-size: 20px;
 	}
 }

@@ -1,14 +1,18 @@
 const passport = require('passport');
 
-exports.loginWithInstagram = passport.authenticate('instagram', {
-  scope : ['comments']
-});
+exports.loginWithInstagram = (req, res, next) => {
+  passport.authenticate('instagram', {
+    scope : ['comments'],
+    callbackURL: `http://${req.headers.host}/auth/instagram/callback`
+  }) (req,res,next);
+};
 
 exports.loginWithInstagramCallback = passport.authenticate('instagram', {
   successRedirect : '/',
   successFlash: 'You have logged in successfully',
   failureRedirect : '/login',
-  failureFlash: 'Login failed'
+  failureFlash: 'Login failed',
+  callbackURL: '/auth/instagram/callback'
 });
 
 exports.logout = (req, res) => {
