@@ -3,7 +3,7 @@ const passport = require('passport');
 exports.loginWithInstagram = (req, res, next) => {
   passport.authenticate('instagram', {
     scope : ['comments'],
-    callbackURL: `http://${req.headers.host}/auth/instagram/callback`
+    callbackURL: `http${req.secure ? 's' : ''}://${req.headers.host}/auth/instagram/callback`
   }) (req,res,next);
 };
 
