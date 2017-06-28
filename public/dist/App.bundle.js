@@ -218,6 +218,7 @@ function copyTags() {
     }
 
     (0, _bling.$)('.photo-page__copy').classList.add('button--success');
+    (0, _bling.$)('.photo-page__app').classList.remove('button--hidden');
     setTimeout(function () {
       (0, _bling.$)('.photo-page__copy').classList.remove('button--success');
     }, 1000);

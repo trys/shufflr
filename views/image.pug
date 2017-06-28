@@ -6,6 +6,7 @@ block content
 			img.photo-page__image(src=image.image)
 			a.button.button--light.photo-page__shuffle(href=`/feed/${image.id}`) Shuffle
 			button.button.button--light.photo-page__copy(type="button") Copy
+			a.button.button--hidden.photo-page__app(href=`${latestLink}` target="_blank") View Latest Image in App
 			//- button.button.photo-page__post(type="submit" form="comment") Post to your latest photo
 			ul.tags
 				each tag in image.tags

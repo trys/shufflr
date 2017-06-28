@@ -109,6 +109,7 @@ function copyTags() {
     }
 
     $('.photo-page__copy').classList.add('button--success');
+    $('.photo-page__app').classList.remove('button--hidden')
     setTimeout(function() {
       $('.photo-page__copy').classList.remove('button--success');
     }, 1000);
