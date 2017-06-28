@@ -1,11 +1,12 @@
 extends layout
 
 block content
-	.inner
+	.inner.image-container
 		h1 Which image do you want to copy hashtags from?
-		each photo in images
-			.photo.card.photo-preview
-				a.photo-preview__link(href=`/feed/${photo.id}`)
-				img.photo-preview__image(src=photo.image)
-				.photo-preview__caption= photo.caption
+		.images
+			each photo in images
+				.photo.card.photo-preview
+					a.photo-preview__link(href=`/feed/${photo.id}`)
+					img.photo-preview__image(src=photo.image)
+					.photo-preview__caption= photo.caption
 
